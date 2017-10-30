@@ -4,6 +4,11 @@ import { Accounts } from 'meteor/accounts-base';
 
 import './main.html';
 
+// Acounts config
+Accounts.ui.config({
+  passwordSignupFields: 'USERNAME_ONLY',
+});
+
 Template.body.helpers({
   notes() {
     return Notes.find({});
@@ -21,10 +26,14 @@ Template.add.events({
     // console.log(text);
 
     // Insert note into collection
-    Notes.insert({
+    /*     Notes.insert({
       text,
       createdAt: new Date(),
+      owner: Meteor.userId(),
+      username: Meteor.user().username,
     });
+*/
+    Meteor.call('notes.insert', text);
 
     // Clear form
     target.text.value = '';
@@ -38,7 +47,8 @@ Template.add.events({
 
 Template.note.events({
   'click .delete-note': function () {
-    Notes.remove(this._id);
+    // Notes.remove(this._id);
+    Meteor.call('notes.remove', this);
     return false;
   },
 });

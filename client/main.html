@@ -1,5 +1,5 @@
 <head>
-  <title>Note Manager</title>
+  <title>Build A Meteor.js App In 45 Minutes - Traversy Media</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
@@ -9,10 +9,13 @@
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">NoteManager</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+          {{#if currentUser}}
+            <li class="nav-item">
+              <a class="waves-effect waves-light btn modal-trigger" href="#addModal">Add Note</a>
+            </li>
+          {{/if}}
           <li class="nav-item">
-            <a class="waves-effect waves-light btn modal-trigger" href="#addModal">Add Note</a>
-          </li>
-          <li class="nav-item">
+            <!-- meteor add accounts-ui accounts-password -->
             {{> loginButtons}}
           </li>
         </ul>
@@ -21,9 +24,13 @@
   </nav>
   <div class="container">
     <h1>Latest Notes</h1>
+    {{#if currentUser}}
     <ul class="collection">
       {{#each notes}} {{> note}} {{/each}}
     </ul>
+    {{else}}
+      <p>Please log in to manage notes</p>
+    {{/if}}
   </div>
 
   {{> add}}
@@ -38,8 +45,10 @@
 
 <template name="note">
   <li class="collection-item">
-    {{text}}
-    <a href="#" class="delete-note secondary-content"><i class="material-icons">close</i></a>
+    {{text}}: <strong>Added by {{username}}</strong>
+    <a href="#" class="delete-note secondary-content">
+      <i class="material-icons">close</i>
+    </a>
   </li>
 </template>
 
