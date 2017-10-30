@@ -10,7 +10,7 @@ module.exports = {
         'meteor'
     ],
     rules:{
-        "linebreak-style": [2],
+        "linebreak-style": ["error", "windows"],
         "no-console": 0,
     },
     env: {
