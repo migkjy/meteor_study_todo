@@ -6,11 +6,13 @@
   <div class="container">
     <h1>Welcome to Meteor!</h1>
     <ul class="collection">
-      {{#each notes}} {{> note}} {{/each}}
+      {{#each notes}}
+        {{> note}}
+      {{/each}}
     </ul>
   </div>
 </body>
 
 <template name="note">
-  <li class="collection-item">My note</li>
+  <li class="collection-item">{{text}}</li>
 </template>
