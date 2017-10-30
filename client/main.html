@@ -3,6 +3,12 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
+  <div>
+    <h1>Welcome to Meteor!</h1>
+    {{> note}}
+  </div>
 </body>
+
+<template name="note">
+  <li class="collection-items">My note</li>
+</template>
