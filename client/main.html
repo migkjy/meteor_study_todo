@@ -3,12 +3,14 @@
 </head>
 
 <body>
-  <div>
+  <div class="container">
     <h1>Welcome to Meteor!</h1>
-    {{> note}}
+    <ul class="collection">
+      {{#each notes}} {{> note}} {{/each}}
+    </ul>
   </div>
 </body>
 
 <template name="note">
-  <li class="collection-items">My note</li>
+  <li class="collection-item">My note</li>
 </template>

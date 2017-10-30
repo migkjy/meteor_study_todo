@@ -7,4 +7,7 @@ Template.note.helpers({
     { text: 'My note 2' },
     { text: 'My note 3' },
   ],
+  myFunction() {
+
+  },
 });
